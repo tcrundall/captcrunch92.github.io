@@ -1,0 +1,58 @@
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+	<!-- Jquerylibaray is accessed online: google hosted libraries -->
+
+<script>
+$(function() {
+	var anagramcheck = function (string1, string2) {
+		var list1 = [];
+		var list2 = [];
+
+		for (i = string1.length - 1; i > - 1; i--) {
+			list1.push(string1[i]);
+		};
+
+		for (i = string2.length - 1; i > - 1; i--) {
+			list2.push(string2[i]);
+		};
+
+		list1.sort()
+		list2.sort();
+				
+		for (i = 0; i < string1.length; i++) {
+			if (list1[i] !== list2[i]) {
+				return false 
+			};
+		};
+
+		return true
+	};
+
+	$("input").keypress(function (e) {
+		debugger
+		var result = anagramcheck($("#input1").val(), $("#input2").val());
+		$("#result").html(result+" ");					//Jquery select: $("#[id of item]")
+
+	// $("#button").on("click", function (e) {
+	// 	var result = anagramcheck($("#input1").val(), $("#input2").val());
+	// 	$("#result").html(result+" ");					//Jquery select: $("#[id of item]")
+	} );
+});
+
+</script>
+</head>
+<body>
+<h1>Anagram checker!</h1>
+
+<p> check if things are anagrams!</p>
+
+<input id="input1">
+<input id="input2">
+
+<button id="button"> Enter </button>
+
+<p id="result"> </p>
+
+</body>
+</html>
